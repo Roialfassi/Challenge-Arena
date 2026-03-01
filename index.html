@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C# Challenge Arena</title>
+  <title>C# Challenge Arena — Master C# Through Practice</title>
+  <meta name="description"
+    content="60 C# coding challenges across 10 difficulty levels. Practice arrays, loops, while loops & functions with real-world scenarios.">
   <link
-    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,12 +18,23 @@
   <header>
     <div class="header-inner">
       <div class="header-left">
-        <h1>C<span>#</span> Challenge Arena</h1>
-        <p>60 challenges across 10 levels — Arrays, Loops, While Loops &amp; Functions</p>
+        <h1>
+          <span class="logo-icon">⚔️</span>
+          <span id="headerTitle">C<span class="hash">#</span> Challenge Arena</span>
+        </h1>
+        <p class="header-subtitle" id="headerSubtitle">Master C# step by step — 60 challenges across 10 levels</p>
+        <div class="header-stats" id="headerStats"></div>
       </div>
       <div class="header-right">
-        <button class="mode-btn active" id="modeLib" onclick="setMode('library')">Library</button>
-        <button class="mode-btn" id="modePrac" onclick="setMode('practice')">Practice</button>
+        <button class="lang-btn" id="langBtn" onclick="toggleLang()" title="עברית / English">
+          <span id="langLabel">🇮🇱 עברית</span>
+        </button>
+        <button class="mode-btn active" id="modeLib" onclick="setMode('library')">
+          <span class="btn-icon">📚</span> <span id="libBtnText">Library</span>
+        </button>
+        <button class="mode-btn" id="modePrac" onclick="setMode('practice')">
+          <span class="btn-icon">🎯</span> <span id="pracBtnText">Practice</span>
+        </button>
       </div>
     </div>
   </header>
@@ -30,21 +43,23 @@
     <aside class="sidebar" id="sidebar"></aside>
     <main class="content">
       <div class="content-header">
-        <h2 id="contentTitle">All Challenges</h2>
+        <h2><span class="title-icon">📋</span> <span id="contentTitle">All Challenges</span></h2>
         <span class="result-count" id="resultCount"></span>
       </div>
       <div class="challenge-list" id="challengeList"></div>
       <div class="empty-state" id="emptyState" style="display:none;">
-        <div class="es-icon">?</div>
-        <p>No challenges match your filters.</p>
+        <div class="es-icon">🔍</div>
+        <p id="emptyText">No challenges match your filters. Try broadening your search.</p>
       </div>
     </main>
   </div>
 
   <div class="practice-view" id="practiceView">
     <div class="prac-start" id="pracStart">
-      <h2>Practice Mode</h2>
-      <p>Pick a starting level. After each challenge, go harder, stay, or go easier.</p>
+      <div class="prac-icon">🎮</div>
+      <h2 id="pracTitle">Practice Mode</h2>
+      <p id="pracDesc">Choose a starting level, then challenge yourself. After each problem you can go harder, stay, or
+        go easier.</p>
       <div class="level-grid" id="levelGrid"></div>
     </div>
     <div class="prac-active" id="pracActive">
@@ -53,15 +68,19 @@
         <span class="prac-count" id="pracCountEl"></span>
       </div>
       <div class="prac-challenge-card" id="pracCardBody"></div>
-      <div class="prac-btns">
-        <button class="pb" id="pbEasier" onclick="pracGo(-1)">&#9661; Easier</button>
-        <button class="pb" id="pbSame" onclick="pracGo(0)">&#8644; Same Level</button>
-        <button class="pb primary" id="pbHarder" onclick="pracGo(1)">&#9651; Harder</button>
-        <button class="pb" onclick="pracReset()" style="margin-left:0.8rem;">Restart</button>
+      <div class="prac-btns" id="pracBtns">
+        <button class="pb" id="pbEasier" onclick="pracGo(-1)">⬇ <span id="easierText">Easier</span></button>
+        <button class="pb" id="pbSame" onclick="pracGo(0)">🔄 <span id="sameText">Same Level</span></button>
+        <button class="pb primary" id="pbHarder" onclick="pracGo(1)">⬆ <span id="harderText">Harder</span></button>
+        <button class="pb" id="pbRestart" onclick="pracReset()">🔁 <span id="restartText">Restart</span></button>
       </div>
     </div>
   </div>
 
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    title="Back to top">↑</button>
+
+  <script src="he.js"></script>
   <script src="script.js"></script>
 </body>
 
